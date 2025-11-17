@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayuresh Gore | Data Analyst & Statistician</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- CSS Variables & Reset --- */
+      :root {
+        --bg-color: #0a192f;
+        --light-bg: #112240;
+        --text-primary: #ccd6f6;
+        --text-secondary: #8892b0;
+        --accent-color: #64ffda;
+        --white: #ffffff;
+        --transition: all 0.3s ease-in-out;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      /* --- Navigation --- */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(10, 25, 47, 0.85);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        font-size: 0.9rem;
+        color: var(--text-primary);
+        font-family: "Roboto Mono", monospace;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      .resume-btn {
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+      }
+
+      .resume-btn:hover {
+        background: rgba(100, 255, 218, 0.1);
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 100px;
+        padding-top: 80px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero-greeting {
+        color: var(--accent-color);
+        font-family: "Roboto Mono", monospace;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        line-height: 1.1;
+        color: var(--text-primary);
+        margin-bottom: 10px;
+      }
+
+      .hero h2 {
+        font-size: 3rem;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        max-width: 540px;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+      }
+
+      .hero-img-container {
+        position: absolute;
+        right: 10%;
+        top: 25%;
+        z-index: -1;
+        opacity: 0.2;
+      }
+
+      .hero-img-container img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        border: 2px solid var(--accent-color);
+      }
+
+      /* --- Section General --- */
+      section {
+        padding: 100px 100px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+        color: var(--text-primary);
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 300px;
+        height: 1px;
+        background: #233554;
+        margin-left: 20px;
+      }
+
+      .section-title span {
+        color: var(--accent-color);
+        font-family: "Roboto Mono", monospace;
+        margin-right: 10px;
+        font-size: 1.5rem;
+      }
+
+      /* --- About & Skills --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 50px;
+      }
+
+      .about-text p {
+        margin-bottom: 15px;
+        color: var(--text-secondary);
+      }
+
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .skills-list li {
+        position: relative;
+        padding-left: 20px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      .skills-list li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+      }
+
+      /* --- Projects (Cards) --- */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .project-card {
+        background-color: var(--light-bg);
+        padding: 2rem;
+        border-radius: 5px;
+        transition: var(--transition);
+        cursor: default;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+      }
+
+      .folder-icon {
+        color: var(--accent-color);
+        font-size: 40px;
+        margin-bottom: 20px;
+      }
+
+      .project-card h3 {
+        margin-bottom: 10px;
+        color: var(--text-primary);
+      }
+
+      .project-card p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .project-tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: auto;
+        font-family: "Roboto Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      /* --- Experience/Education --- */
+      .timeline-item {
+        border-left: 2px solid var(--accent-color);
+        padding-left: 20px;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--bg-color);
+        border: 2px solid var(--accent-color);
+      }
+
+      .degree {
+        font-size: 1.2rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .university {
+        color: var(--accent-color);
+        font-family: "Roboto Mono", monospace;
+        font-size: 0.9rem;
+      }
+
+      .year {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      /* --- Certifications --- */
+      .cert-list li {
+        margin-bottom: 15px;
+      }
+
+      .cert-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-secondary);
+      }
+
+      .cert-link:hover {
+        color: var(--accent-color);
+      }
+
+      /* --- Contact --- */
+      .contact-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding-bottom: 100px;
+      }
+
+      .contact-container h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .contact-container p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 50px;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .social-links a {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+      }
+
+      .social-links a:hover {
+        color: var(--accent-color);
+        transform: translateY(-3px);
+      }
+
+      .btn-main {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border: 1px solid var(--accent-color);
+        color: var(--accent-color);
+        border-radius: 5px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 1rem;
+        margin-top: 20px;
+      }
+
+      .btn-main:hover {
+        background: rgba(100, 255, 218, 0.1);
+      }
+
+      /* --- Footer --- */
+      footer {
+        text-align: center;
+        padding: 20px;
+        color: var(--text-secondary);
+        font-family: "Roboto Mono", monospace;
+        font-size: 0.8rem;
+      }
+
+      /* --- Mobile Responsiveness --- */
+      @media (max-width: 768px) {
+        nav {
+          padding: 20px;
+        }
+        .nav-links {
+          display: none;
+        } /* Simple hide for mobile for now */
+        .hero {
+          padding: 100px 20px;
+          text-align: left;
+        }
+        .hero h1 {
+          font-size: 3rem;
+        }
+        .hero h2 {
+          font-size: 2rem;
+        }
+        .hero-img-container {
+          display: none;
+        }
+        section {
+          padding: 60px 20px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-title::after {
+          width: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">MG.</div>
+      <div class="nav-links">
+        <a href="#about"
+          ><span style="color: var(--accent-color)">01.</span> About</a
+        >
+        <a href="#projects"
+          ><span style="color: var(--accent-color)">02.</span> Projects</a
+        >
+        <a href="#education"
+          ><span style="color: var(--accent-color)">03.</span> Education</a
+        >
+        <a href="#contact"
+          ><span style="color: var(--accent-color)">04.</span> Contact</a
+        >
+        <a
+          href="https://github.com/MayureshGore/Certificates/raw/main/Resume_Mayuresh.pdf"
+          target="_blank"
+          class="resume-btn"
+          >Resume</a
+        >
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-greeting">Hi, my name is</span>
+        <h1>Mayuresh Gore.</h1>
+        <h2>I turn data into actionable insights.</h2>
+        <p>
+          I am a Data Analyst and Statistician proficient in Python, SQL, and
+          Power BI. I specialize in predictive modeling, statistical analysis,
+          and building solutions that drive business growth.
+        </p>
+        <a href="#projects" class="btn-main">Check out my work!</a>
+      </div>
+      <div class="hero-img-container">
+        <img
+          src="https://github.com/MayureshGore/Certificates/raw/main/mayuresh.jpeg"
+          alt="Mayuresh Gore"
+        />
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title"><span>01.</span> About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Hello! I'm Mayuresh, a postgraduate in Statistics with 2 years of
+            professional experience. My passion lies in solving complex problems
+            by leveraging data-driven strategies.
+          </p>
+          <p>
+            I have expertise in dashboard design and deriving insights from
+            complex datasets. My background allows me to bridge the gap between
+            raw data and strategic decision-making.
+          </p>
+          <p>Here are a few technologies I've been working with recently:</p>
+          <ul class="skills-list">
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Power BI</li>
+            <li>Pandas & NumPy</li>
+            <li>Scikit-Learn</li>
+            <li>Flask</li>
+            <li>Statistical Modeling</li>
+            <li>NLP (SpaCy/NLTK)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title"><span>02.</span> Some Things I've Built</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="card-header">
+            <i class="fa-regular fa-folder folder-icon"></i>
+          </div>
+          <div>
+            <h3>Resume Classification</h3>
+            <p>
+              Developed an automated system to classify resumes into predefined
+              categories. This streamlined recruitment by reducing manual
+              workload and improving hiring speed.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>NLP</li>
+            <li>Flask</li>
+            <li>Scikit-learn</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="card-header">
+            <i class="fa-regular fa-folder folder-icon"></i>
+          </div>
+          <div>
+            <h3>Customer Personality Analysis</h3>
+            <p>
+              Analyzed customer data to enhance marketing strategies. Used
+              clustering techniques (K-means) to provide actionable insights
+              improving engagement and retention.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>K-Means</li>
+            <li>Seaborn</li>
+            <li>Pandas</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <div class="card-header">
+            <i class="fa-regular fa-folder folder-icon"></i>
+          </div>
+          <div>
+            <h3>Employee Attrition Analysis</h3>
+            <p>
+              Identified key factors influencing employee turnover through
+              statistical modeling. Enabled the organization to implement
+              targeted retention strategies.
+            </p>
+          </div>
+          <ul class="project-tech-list">
+            <li>Python</li>
+            <li>Statistics</li>
+            <li>Predictive Modeling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title"><span>03.</span> Education & Certifications</h2>
+
+      <div class="about-grid">
+        <div>
+          <h3 style="margin-bottom: 20px; color: var(--text-primary)">
+            Academics
+          </h3>
+          <div class="timeline-item">
+            <div class="degree">Master of Science (Statistics)</div>
+            <div class="university">
+              Dr. Babasaheb Ambedkar Marathwada University
+            </div>
+            <span class="year">2021 - 2023</span>
+          </div>
+          <div class="timeline-item">
+            <div class="degree">Bachelor of Science (Statistics)</div>
+            <div class="university">Savitribai Phule Pune University (TCC)</div>
+            <span class="year">2018 - 2021</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 20px; color: var(--text-primary)">
+            Certifications
+          </h3>
+          <ul class="cert-list">
+            <li>
+              <a
+                href="https://github.com/MayureshGore/Certificates/raw/main/Data_Science_certificate.pdf"
+                target="_blank"
+                class="cert-link"
+              >
+                <i class="fa-solid fa-certificate"></i> Data Science Certificate
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/MayureshGore/Certificates/raw/main/Data_Science_Project_Certificate.pdf"
+                target="_blank"
+                class="cert-link"
+              >
+                <i class="fa-solid fa-certificate"></i> Data Science Project
+                Cert.
+              </a>
+            </li>
+            <li>
+              <a href="#" class="cert-link">
+                <i class="fa-solid fa-certificate"></i> Project Completion Cert.
+                1
+              </a>
+            </li>
+            <li>
+              <a href="#" class="cert-link">
+                <i class="fa-solid fa-certificate"></i> Project Completion Cert.
+                2
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-container">
+        <h2
+          class="section-title"
+          style="justify-content: center; margin-bottom: 20px"
+        >
+          <span>04.</span> Get In Touch
+        </h2>
+        <p>
+          I am currently looking for new opportunities as a Data Analyst.
+          Whether you have a question or just want to say hi, my inbox is always
+          open!
+        </p>
+
+        <a href="mailto:mayureshgore7@gmail.com" class="btn-main">Say Hello</a>
+
+        <div class="social-links">
+          <a
+            href="https://in.linkedin.com/in/mayuresh-gore-5696b821b"
+            target="_blank"
+            title="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/MayureshGore"
+            target="_blank"
+            title="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="mailto:mayureshgore7@gmail.com" title="Email"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+        </div>
+
+        <div
+          style="
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+          "
+        >
+          <p>
+            <i class="fa-solid fa-phone"></i> +91 9765686088 / +91 9730079740
+          </p>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> Solapur, Maharashtra, India
+            - 413109
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Designed & Built by Mayuresh Gore</p>
+    </footer>
+
+    <script>
+      // Smooth Scrolling for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+
+      // Simple Fade-in Animation on Scroll
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = "translateY(0)";
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section").forEach((section) => {
+        section.style.opacity = 0;
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "all 0.6s ease-out";
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
